@@ -1,0 +1,24 @@
+{
+  "name": "gitbook-plugin-summary-splitter",
+  "version": "0.0.1",
+  "description": "this plug-in provides a vertical bar that divides the summary and main content.",
+  "main": "index.js",
+  "engines": {
+    "gitbook": "*"
+  },
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoshidax/gitbook-plugin-summary-splitter.git"
+  },
+  "keywords": [
+    "gitbook"
+  ],
+  "author": "yoshidax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoshidax/gitbook-plugin-summary-splitter/issues"
+  },
+  "homepage": "https://github.com/yoshidax/gitbook-plugin-summary-splitter#readme"
+}
