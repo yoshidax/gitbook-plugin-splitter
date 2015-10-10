@@ -1,6 +1,8 @@
 summary-splitter
 ==============
 
+![summary-splitter](https://raw.githubusercontent.com/yoshidax/gitbook-plugin-summary-splitter/master/gitbook-splitter-demo.gif)
+
 this plug-in provides a vertical bar that divides the summary and main content.
 
 ### other feature
