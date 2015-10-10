@@ -2,10 +2,10 @@ module.exports = {
     website: {
         assets: './book',
         js: [
-            'summary-spritter.js'
+            'summary-splitter.js'
         ],
         css: [
-            'summary-spritter.css'
+            'summary-splitter.css'
         ]
     }
 };
