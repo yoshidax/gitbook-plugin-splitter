@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-splitter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "this plug-in provides a vertical bar that divides the summary and main content.",
   "main": "index.js",
   "engines": {
