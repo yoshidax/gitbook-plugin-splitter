@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-require(['gitbook', 'jQuery'], function (gitbook, $) {
+require(['gitbook', 'jQuery', 'lodash'], function (gitbook, $, _) {
 
 	gitbook.events.bind('start', function () {
 	});
@@ -19,7 +19,6 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
 		var $book = $('.book');
 		var $summary = $('.book-summary');
 		var $bookBody = $('.book-body');
-		var $toggleSummary = $('.toggle-summary');
 		var $divider = $('<div class="divider-content-summary">' +
 			               '<div class="divider-content-summary__icon">' +
 			                 '<i class="fa fa-ellipsis-v"></i>' +
@@ -39,21 +38,31 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
 			splitState.bookBodyOffset
 		);
 		
-		$toggleSummary.on('click', function () {
+		_.defer(function() {
+			var isGreaterThanEqualGitbookV2_5 = !Boolean($('.toggle-summary').length);
 
-			var summaryOffset  = null;
-			var bookBodyOffset = null;
+			var $toggleSummary = isGreaterThanEqualGitbookV2_5 
+				? $('.fa.fa-align-justify').parent() : $('.toggle-summary');
+
+			$toggleSummary.on('click', function () {
 	
-			if ($book.hasClass('with-summary')) {
-				summaryOffset  = -($summary.outerWidth());
-				bookBodyOffset = 0;
-			} else {
-				summaryOffset  = 0;
-				bookBodyOffset = $summary.outerWidth();
-			}
-
-			setSplitState($summary.outerWidth(), summaryOffset, bookBodyOffset);
-			saveSplitState($summary.outerWidth(), summaryOffset, bookBodyOffset);
+				var summaryOffset  = null;
+				var bookBodyOffset = null;
+				
+				var isOpen = isGreaterThanEqualGitbookV2_5 
+					? !gitbook.sidebar.isOpen() : $book.hasClass('with-summary');
+		
+				if (isOpen) {
+					summaryOffset  = -($summary.outerWidth());
+					bookBodyOffset = 0;
+				} else {
+					summaryOffset  = 0;
+					bookBodyOffset = $summary.outerWidth();
+				}
+	
+				setSplitState($summary.outerWidth(), summaryOffset, bookBodyOffset);
+				saveSplitState($summary.outerWidth(), summaryOffset, bookBodyOffset);
+			});
 		});
 
 		$divider.on('mousedown', function (event) {
