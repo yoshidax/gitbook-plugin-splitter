@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-require(['gitbook', 'jQuery', 'lodash'], function (gitbook, $, _) {
+require(['gitbook', 'jQuery'], function (gitbook, $) {
 
 	gitbook.events.bind('start', function () {
 	});
@@ -37,21 +37,21 @@ require(['gitbook', 'jQuery', 'lodash'], function (gitbook, $, _) {
 			splitState.summaryOffset,
 			splitState.bookBodyOffset
 		);
-		
-		_.defer(function() {
+
+		setTimeout(function() {
 			var isGreaterThanEqualGitbookV2_5 = !Boolean($('.toggle-summary').length);
 
-			var $toggleSummary = isGreaterThanEqualGitbookV2_5 
+			var $toggleSummary = isGreaterThanEqualGitbookV2_5
 				? $('.fa.fa-align-justify').parent() : $('.toggle-summary');
 
 			$toggleSummary.on('click', function () {
-	
+
 				var summaryOffset  = null;
 				var bookBodyOffset = null;
-				
-				var isOpen = isGreaterThanEqualGitbookV2_5 
+
+				var isOpen = isGreaterThanEqualGitbookV2_5
 					? !gitbook.sidebar.isOpen() : $book.hasClass('with-summary');
-		
+
 				if (isOpen) {
 					summaryOffset  = -($summary.outerWidth());
 					bookBodyOffset = 0;
@@ -59,11 +59,11 @@ require(['gitbook', 'jQuery', 'lodash'], function (gitbook, $, _) {
 					summaryOffset  = 0;
 					bookBodyOffset = $summary.outerWidth();
 				}
-	
+
 				setSplitState($summary.outerWidth(), summaryOffset, bookBodyOffset);
 				saveSplitState($summary.outerWidth(), summaryOffset, bookBodyOffset);
 			});
-		});
+		}, 1);
 
 		$divider.on('mousedown', function (event) {
 			event.stopPropagation();
@@ -114,7 +114,7 @@ require(['gitbook', 'jQuery', 'lodash'], function (gitbook, $, _) {
 			$bookBody.offset({ left: bookBodyOffset });
 			// improved broken layout in windows chrome.
 			//   "$(x).offset" automatically add to "position:relative".
-			//   but it cause layout broken.. 
+			//   but it cause layout broken..
 			$summary.css({ position: 'absolute' });
 			$bookBody.css({ position: 'absolute' });
 		}
