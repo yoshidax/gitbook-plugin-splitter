@@ -27,6 +27,10 @@ $ gitbook install
 
 ### change logs
 
+#### version 0.0.6 (2015-11-06T16:54:38)
+
+* supported Gitbook v3
+
 #### version 0.0.5 (2015-11-06T16:54:38)
 
 * fixed don't work toggle button of summary view display from Gitbook V2.5.x
