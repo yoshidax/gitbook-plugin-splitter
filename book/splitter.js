@@ -1,4 +1,12 @@
 require(['gitbook', 'jQuery'], function (gitbook, $) {
+  
+	// MEMO:
+	// Gitbook is calculated as "calc (100% - 60px)" in the horizontal width when the width of the screen size is 600px
+	// or less.
+	// In this case, since contradiction occurs in the implementation of this module, return.
+	if($(window).width() <= 600) {
+		return;
+	}
 
 	gitbook.events.bind('start', function () {
 	});
