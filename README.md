@@ -5,9 +5,11 @@ gitbook-plugin-splitter
 
 this plug-in provides a vertical bar that divides the summary and main content.
 
+[![NPM](https://nodei.co/npm/gitbook-plugin-splitter.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/gitbook-plugin-splitter/)
+
 ### other feature
 
-* It will save the position information of the splitter to localStorage.
+* It will save the position information of the splitter to sessionStorage.
 
 ### How to use it?
 
@@ -26,6 +28,11 @@ $ gitbook install
 ```
 
 ### change logs
+
+#### version 0.0.6 (2016-12-06T16:54:38)
+
+* fix: Fixed not to do anything when the width of the screen size was 600px or less (#6) 
+* fix: changed the position of the bar position from "localStorage" to "sessiongStorage" (#10)
 
 #### version 0.0.6 (2015-11-06T16:54:38)
 
