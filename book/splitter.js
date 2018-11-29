@@ -77,6 +77,29 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
 			grabPointWidth = $summary.outerWidth() - event.pageX;
 		});
 
+		$body.on('keydown', function (event) {
+			var isGreaterThanEqualGitbookV2_5 = !Boolean($('.toggle-summary').length);
+
+			if (event.keyCode == 83) {
+				var summaryOffset  = null;
+				var bookBodyOffset = null;
+
+				var isOpen = isGreaterThanEqualGitbookV2_5
+					? !gitbook.sidebar.isOpen() : $book.hasClass('with-summary');
+
+				if (isOpen) {
+					summaryOffset  = -($summary.outerWidth());
+					bookBodyOffset = 0;
+				} else {
+					summaryOffset  = 0;
+					bookBodyOffset = $summary.outerWidth();
+				}
+
+				setSplitState($summary.outerWidth(), summaryOffset, bookBodyOffset);
+				saveSplitState($summary.outerWidth(), summaryOffset, bookBodyOffset);
+			};
+		});
+
 		$body.on('mouseup', function (event) {
 			event.stopPropagation();
 			isDraggable = false;
